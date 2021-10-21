@@ -1,8 +1,6 @@
-import * as React from "react";
-import { ethers } from "ethers";
 import "./App.css";
 
-export default function App() {
+function App() {
 	const wave = () => {};
 
 	return (
@@ -22,3 +20,5 @@ export default function App() {
 		</div>
 	);
 }
+
+export default App;
