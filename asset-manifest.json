@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/my-wave-portal/static/css/main.4e76276f.chunk.css",
-    "main.js": "/my-wave-portal/static/js/main.12c7d544.chunk.js",
-    "main.js.map": "/my-wave-portal/static/js/main.12c7d544.chunk.js.map",
-    "runtime-main.js": "/my-wave-portal/static/js/runtime-main.ba02e995.js",
-    "runtime-main.js.map": "/my-wave-portal/static/js/runtime-main.ba02e995.js.map",
-    "static/js/2.f534c404.chunk.js": "/my-wave-portal/static/js/2.f534c404.chunk.js",
-    "static/js/2.f534c404.chunk.js.map": "/my-wave-portal/static/js/2.f534c404.chunk.js.map",
-    "static/js/3.ccba325a.chunk.js": "/my-wave-portal/static/js/3.ccba325a.chunk.js",
-    "static/js/3.ccba325a.chunk.js.map": "/my-wave-portal/static/js/3.ccba325a.chunk.js.map",
-    "index.html": "/my-wave-portal/index.html",
-    "static/css/main.4e76276f.chunk.css.map": "/my-wave-portal/static/css/main.4e76276f.chunk.css.map",
-    "static/js/2.f534c404.chunk.js.LICENSE.txt": "/my-wave-portal/static/js/2.f534c404.chunk.js.LICENSE.txt"
+    "main.css": "/waveportal-starter-project/static/css/main.4e76276f.chunk.css",
+    "main.js": "/waveportal-starter-project/static/js/main.12c7d544.chunk.js",
+    "main.js.map": "/waveportal-starter-project/static/js/main.12c7d544.chunk.js.map",
+    "runtime-main.js": "/waveportal-starter-project/static/js/runtime-main.e24b235e.js",
+    "runtime-main.js.map": "/waveportal-starter-project/static/js/runtime-main.e24b235e.js.map",
+    "static/js/2.f534c404.chunk.js": "/waveportal-starter-project/static/js/2.f534c404.chunk.js",
+    "static/js/2.f534c404.chunk.js.map": "/waveportal-starter-project/static/js/2.f534c404.chunk.js.map",
+    "static/js/3.ccba325a.chunk.js": "/waveportal-starter-project/static/js/3.ccba325a.chunk.js",
+    "static/js/3.ccba325a.chunk.js.map": "/waveportal-starter-project/static/js/3.ccba325a.chunk.js.map",
+    "index.html": "/waveportal-starter-project/index.html",
+    "static/css/main.4e76276f.chunk.css.map": "/waveportal-starter-project/static/css/main.4e76276f.chunk.css.map",
+    "static/js/2.f534c404.chunk.js.LICENSE.txt": "/waveportal-starter-project/static/js/2.f534c404.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ba02e995.js",
+    "static/js/runtime-main.e24b235e.js",
     "static/js/2.f534c404.chunk.js",
     "static/css/main.4e76276f.chunk.css",
     "static/js/main.12c7d544.chunk.js"
