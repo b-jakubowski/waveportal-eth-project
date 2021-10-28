@@ -8,16 +8,53 @@ function App() {
 	const [allWaves, setAllWaves] = useState([]);
 	const [waveText, setWaveText] = useState("");
 	const [mining, setMining] = useState(false);
-	const { ethereum } = window;
 	const contractAddress = "0xd63aBff74143f24f5a7A2156c205c36D94dCc7c5";
 	const contractABI = WavePortalContract.abi;
-	const provider = new ethers.providers.Web3Provider(ethereum);
-	const signer = provider.getSigner();
-	const wavePortalContract = new ethers.Contract(
-		contractAddress,
-		contractABI,
-		signer
-	);
+	const { ethereum } = window;
+	const provider = ethereum && new ethers.providers.Web3Provider(ethereum);
+	const signer = ethereum && provider.getSigner();
+	const wavePortalContract =
+		ethereum && new ethers.Contract(contractAddress, contractABI, signer);
+
+	useEffect(() => {
+		const initialCheck = async () => {
+			await checkIfWalletIsConnected();
+			await getAllWaves();
+		};
+
+		initialCheck();
+	}, []);
+
+	useEffect(() => {
+		let wavePortalContract;
+
+		const onNewWave = (from, timestamp, message) => {
+			console.warn("NewWave", from, timestamp, message);
+			setAllWaves((prevState) => [
+				...prevState,
+				{
+					address: from,
+					timestamp: new Date(timestamp * 1000),
+					message: message,
+				},
+			]);
+		};
+
+		if (window.ethereum) {
+			wavePortalContract = new ethers.Contract(
+				contractAddress,
+				contractABI,
+				signer
+			);
+			wavePortalContract.on("NewWave", onNewWave);
+		}
+
+		return () => {
+			if (wavePortalContract) {
+				wavePortalContract.off("NewWave", onNewWave);
+			}
+		};
+	}, []);
 
 	const checkIfWalletIsConnected = async () => {
 		try {
@@ -62,7 +99,6 @@ function App() {
 
 	const getAllWaves = async () => {
 		try {
-			const { ethereum } = window;
 			if (ethereum) {
 				const waves = await wavePortalContract.getAllWaves();
 
@@ -118,46 +154,6 @@ function App() {
 
 	const handleTextChange = (event) => setWaveText(event.target.value);
 
-	useEffect(() => {
-		const initialCheck = async () => {
-			await checkIfWalletIsConnected();
-			await getAllWaves();
-		};
-
-		initialCheck();
-	}, []);
-
-	useEffect(() => {
-		let wavePortalContract;
-
-		const onNewWave = (from, timestamp, message) => {
-			console.warn("NewWave", from, timestamp, message);
-			setAllWaves((prevState) => [
-				...prevState,
-				{
-					address: from,
-					timestamp: new Date(timestamp * 1000),
-					message: message,
-				},
-			]);
-		};
-
-		if (window.ethereum) {
-			wavePortalContract = new ethers.Contract(
-				contractAddress,
-				contractABI,
-				signer
-			);
-			wavePortalContract.on("NewWave", onNewWave);
-		}
-
-		return () => {
-			if (wavePortalContract) {
-				wavePortalContract.off("NewWave", onNewWave);
-			}
-		};
-	}, []);
-
 	return (
 		<div className="mainContainer">
 			<div className="dataContainer">
@@ -190,7 +186,7 @@ function App() {
 					disabled={waveText.length < 2}
 					onClick={wave}
 				>
-					Wave at Me
+					{ethereum ? "Wave at Me" : "Please install metamask in browser"}
 				</button>
 
 				{!currentAccount && (
@@ -206,6 +202,7 @@ function App() {
 				)}
 
 				<p>All waves:</p>
+				{!currentAccount && <p>Connect Your wallet to see who else waved!</p>}
 				<div style={{ marginBottom: "32px" }}>
 					{allWaves.map((wave, index) => {
 						return (
