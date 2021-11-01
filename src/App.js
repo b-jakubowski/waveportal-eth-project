@@ -23,7 +23,7 @@ function App() {
 		};
 
 		initialCheck();
-	}, []);
+	}, [currentAccount]);
 
 	useEffect(() => {
 		let wavePortalContract;
