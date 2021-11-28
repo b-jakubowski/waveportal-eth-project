@@ -1,6 +1,6 @@
 {
-	"name": "my-wave-portal-client",
-	"homepage": "https://b-jakubowski.github.io/waveportal-starter-project/",
+	"name": "waveportal-eth-project",
+	"homepage": "https://b-jakubowski.github.io/waveportal-eth-project/",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
